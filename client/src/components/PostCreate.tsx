@@ -15,7 +15,10 @@ const PostCreate: FC = () => {
   ) => {
     console.log(title);
     event.preventDefault();
-    await axios.post('http://localhost:4000/posts', { title });
+    await axios.post(
+      `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_POST_PORT}/posts`,
+      { title }
+    );
     setTitle('');
   };
 

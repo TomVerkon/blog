@@ -15,7 +15,7 @@ const CommentList = ({ postId }: ListCommentsProps): JSX.Element => {
 
   const fetchComments = async () => {
     const res = await axios.get(
-      `http://localhost:4001/posts/${postId}/comments`
+      `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_COMMENT_PORT}/posts/${postId}/comments`
     );
     setComments(res.data);
   };

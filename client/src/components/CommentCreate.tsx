@@ -19,9 +19,12 @@ const CommentCreate: React.FC<CommentCreateProps> = ({ postId }) => {
   ) => {
     console.log(content);
     event.preventDefault();
-    await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
-      content,
-    });
+    await axios.post(
+      `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_COMMENT_PORT}/posts/${postId}/comments`,
+      {
+        content,
+      }
+    );
     setContent('');
   };
 
