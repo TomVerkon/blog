@@ -37,5 +37,7 @@ app.post('/posts', (req, res) => {
 });
 
 app.listen(port, (): void => {
-  return console.log(`Express is listening at http://localhost:${port}`);
+  return console.log(
+    `Express is listening at ${process.env.REACT_APP_BASE_URL}:${port}`
+  );
 });

@@ -2,11 +2,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { randomBytes } from 'crypto';
 import cors from 'cors';
+import dotenv from 'dotenv';
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-const port = 4001;
+dotenv.config();
+
+const port = process.env.REACT_APP_COMMENT_PORT;
 
 interface CommentsByPostId {
   [key: string]: Array<{
@@ -46,5 +49,7 @@ app.post('/posts/:id/comments', (req, res) => {
 });
 
 app.listen(port, (): void => {
-  return console.log(`Express is listening at http://localhost:${port}`);
+  return console.log(
+    `Express is listening at ${process.env.REACT_APP_BASE_URL}:${port}`
+  );
 });
