@@ -17,7 +17,7 @@ const CommentCreate: React.FC<CommentCreateProps> = ({ postId }) => {
   const onSubmitHandler: React.FormEventHandler<HTMLFormElement> = async (
     event
   ) => {
-    console.log(content);
+    //console.log(content);
     event.preventDefault();
     await axios.post(
       `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_COMMENT_PORT}/posts/${postId}/comments`,
