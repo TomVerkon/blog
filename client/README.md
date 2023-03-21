@@ -1,3 +1,30 @@
+# If you ever comeback to this project you will have to a .env file in the client base directory.
+
+# It's content should be as follows:
+
+REACT_APP_BASE_URL=http://localhost
+REACT_APP_POST_PORT=4000
+REACT_APP_COMMENT_PORT=4001
+REACT_APP_QUERY_PORT=4002
+REACT_APP_MODERATION_PORT=4003
+REACT_APP_EVENTBUS_PORT=4005
+
+REACT_APP_POST_CREATED=PostCreated
+REACT_APP_COMMENT_CREATED=CommentCreated
+REACT_APP_COMMENT_MODERATED=CommentModerated
+REACT_APP_COMMENT_UPDATED=CommentUpdated
+
+Then you have to create a symlink to this file in the base file of every other module.
+
+example:
+go to posts root directory and run the following command
+mklink .env ..\client\.env
+go to comments root directory and run the same command
+do this for all the other modules, event-bus, moderation, query
+
+I know this isn't the right way to use and expose a .env file
+but I was experimenting with mklink
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
