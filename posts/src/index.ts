@@ -11,7 +11,7 @@ app.use(cors());
 dotenv.config();
 const port = process.env.REACT_APP_POST_PORT;
 const eventBusPort = process.env.REACT_APP_EVENTBUS_PORT;
-const baseUrl = process.env.REACT_APP_BASE_URL;
+const baseUrl = 'event-bus-srv';
 
 interface Post {
   id: string;
@@ -59,5 +59,6 @@ app.post('/events', (req, res) => {
 });
 
 app.listen(port, (): void => {
+  console.log('Vesrion 0.0.3');
   return console.log(`Posts Service listening at ${baseUrl}:${port}`);
 });

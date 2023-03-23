@@ -20,7 +20,8 @@
     "declaration": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "incremental": true
+    "incremental": true,
+    "outDir": "./dist"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]

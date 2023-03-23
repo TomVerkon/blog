@@ -1,0 +1,42 @@
+# K8s is extensible - we can add in our own custom objects.
+# This specifies the set of objects we want K8s to look at
+apiVersion: apps/v1
+# The type of Object we want to create ie: Pod|Deployment
+kind: Deployment
+# Config options for the deployment we are about to create
+metadata:
+  # When the deployment is created, give it a name of posts-depl
+  name: posts-depl
+spec:
+  # create one instance
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: posts
+  template:
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers:
+        - name: posts
+          # because no version suffix, kubernetes presumes latest version
+          # After you make code changes, again run docker build -t tverkon/posts
+          # Then run "Kubectl rollout restart deployment tverkon/posts" to
+          # to deploy your changes
+          image: tverkon/posts
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: post-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: posts
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
